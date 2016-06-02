@@ -33,10 +33,7 @@ public class Ejercicio2 extends javax.swing.JFrame {
         txtN1 = new javax.swing.JTextField();
         txtN2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        chkSuma = new javax.swing.JCheckBox();
-        chkResta = new javax.swing.JCheckBox();
-        chkMultiplicacion = new javax.swing.JCheckBox();
-        chkDivision = new javax.swing.JCheckBox();
+        cboOperaciones = new javax.swing.JComboBox<>();
         lblResultado = new javax.swing.JLabel();
         txtResultado = new javax.swing.JTextField();
 
@@ -49,35 +46,10 @@ public class Ejercicio2 extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Operaciones"));
 
-        btnGroupOperaciones.add(chkSuma);
-        chkSuma.setText("Suma");
-        chkSuma.addActionListener(new java.awt.event.ActionListener() {
+        cboOperaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Suma", "Resta", "Multiplicacion", "Division" }));
+        cboOperaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkSumaActionPerformed(evt);
-            }
-        });
-
-        btnGroupOperaciones.add(chkResta);
-        chkResta.setText("Resta");
-        chkResta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRestaActionPerformed(evt);
-            }
-        });
-
-        btnGroupOperaciones.add(chkMultiplicacion);
-        chkMultiplicacion.setText("Multiplicacion");
-        chkMultiplicacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkMultiplicacionActionPerformed(evt);
-            }
-        });
-
-        btnGroupOperaciones.add(chkDivision);
-        chkDivision.setText("Division");
-        chkDivision.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkDivisionActionPerformed(evt);
+                cboOperacionesActionPerformed(evt);
             }
         });
 
@@ -87,25 +59,15 @@ public class Ejercicio2 extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkSuma)
-                    .addComponent(chkResta)
-                    .addComponent(chkMultiplicacion)
-                    .addComponent(chkDivision))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addComponent(cboOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(chkSuma)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkResta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkMultiplicacion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkDivision)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(cboOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblResultado.setText("Resultado: ");
@@ -119,21 +81,20 @@ public class Ejercicio2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(lblResultado)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblN1)
                             .addComponent(lblN2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtN1, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                            .addComponent(txtN2))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtN2)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(lblResultado)
+                .addGap(18, 18, 18)
+                .addComponent(txtResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,55 +109,50 @@ public class Ejercicio2 extends javax.swing.JFrame {
                     .addComponent(txtN2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblResultado)
                     .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSumaActionPerformed
+    private void cboOperacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboOperacionesActionPerformed
         // TODO add your handling code here:
-        if(chkSuma.isSelected()){
+        if(cboOperaciones.getSelectedIndex() == 0){
+            txtResultado.setText("");
             float n1 = Float.parseFloat(txtN1.getText());
             float n2 = Float.parseFloat(txtN2.getText());
             float resultado = n1 + n2;
             txtResultado.setText("" + resultado); 
         }
-    }//GEN-LAST:event_chkSumaActionPerformed
-
-    private void chkRestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRestaActionPerformed
-        // TODO add your handling code here:
-        if(chkResta.isSelected()){
+        
+        if(cboOperaciones.getSelectedIndex() == 1){
+            txtResultado.setText("");
             float n1 = Float.parseFloat(txtN1.getText());
             float n2 = Float.parseFloat(txtN2.getText());
             float resultado = n1 - n2;
             txtResultado.setText("" + resultado); 
         }
-    }//GEN-LAST:event_chkRestaActionPerformed
-
-    private void chkMultiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMultiplicacionActionPerformed
-        // TODO add your handling code here:
-        if(chkMultiplicacion.isSelected()){
+        
+        if(cboOperaciones.getSelectedIndex() == 2){
+            txtResultado.setText("");
             float n1 = Float.parseFloat(txtN1.getText());
             float n2 = Float.parseFloat(txtN2.getText());
             float resultado = n1 * n2;
             txtResultado.setText("" + resultado); 
         }
-    }//GEN-LAST:event_chkMultiplicacionActionPerformed
-
-    private void chkDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDivisionActionPerformed
-        // TODO add your handling code here:
-        if(chkDivision.isSelected()){
+        
+        if(cboOperaciones.getSelectedIndex() == 3){
+            txtResultado.setText("");
             float n1 = Float.parseFloat(txtN1.getText());
             float n2 = Float.parseFloat(txtN2.getText());
             float resultado = n1 / n2;
             txtResultado.setText("" + resultado); 
         }
-    }//GEN-LAST:event_chkDivisionActionPerformed
+    }//GEN-LAST:event_cboOperacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,10 +191,7 @@ public class Ejercicio2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroupOperaciones;
-    private javax.swing.JCheckBox chkDivision;
-    private javax.swing.JCheckBox chkMultiplicacion;
-    private javax.swing.JCheckBox chkResta;
-    private javax.swing.JCheckBox chkSuma;
+    private javax.swing.JComboBox<String> cboOperaciones;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblN1;
     private javax.swing.JLabel lblN2;
